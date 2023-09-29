@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "la_mia_pizzeria_static": {
+    "la_mia_pizzeria_crud": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
