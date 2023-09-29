@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Home Page";
+}
+
+@model List<Pizza>
+
+@if(Model.Count() == 0)
+{
+    <h3>Nessuna Pizza disponibile</h3>
+} else
+{
+    <h2>Le nostre Pizze</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Descrizione</th>
+                <th scope="col">Foto</th>
+                <th scope="col">Prezzo</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach(Pizza pizza in Model)
+            {
+                <tr>
+                    <th scope="row">@pizza.Id</th>
+                    <td>@pizza.Name</td>
+                    <td>@pizza.Description</td>
+                    <td>
+                        <img class="pizza" src="@pizza.Image" alt="Foto della pizza @pizza.Name "/>
+                    </td>
+                    <td>@pizza.Prize €</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+}
+
+
+
