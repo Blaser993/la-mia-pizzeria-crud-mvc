@@ -19,6 +19,7 @@
                 <th scope="col">Descrizione</th>
                 <th scope="col">Foto</th>
                 <th scope="col">Prezzo</th>
+                <th scope="col">Azioni</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,11 @@
                         <img class="pizza" src="@pizza.Image" alt="Foto della pizza @pizza.Name "/>
                     </td>
                     <td>@pizza.Prize €</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" href="@Url.Action("Details", "Pizza", new {id = pizza.Id})">
+                            <button>Dettagli</button>
+                        </a>
+                    </td>
                 </tr>
             }
 
