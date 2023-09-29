@@ -1,0 +1,11 @@
+﻿.pizza{
+
+    max-width:150px;
+    max-height:150px;
+    aspect-ratio:1;
+}
+
+a{
+    color: currentColor;
+    text-decoration:none !important
+}
