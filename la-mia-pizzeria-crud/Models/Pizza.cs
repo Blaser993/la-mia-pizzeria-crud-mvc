@@ -17,7 +17,7 @@ namespace la_mia_pizzeria_static.Models
         public string Image { get; set; }
         public float Prize { get; set; }
 
-
+        public Pizza() { }
         public Pizza(string name, string description, string image ) 
         {
             this.Name = name;
