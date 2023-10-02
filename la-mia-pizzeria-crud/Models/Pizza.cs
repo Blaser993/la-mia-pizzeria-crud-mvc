@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using la_mia_pizzeria_static.ValidationCustom;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace la_mia_pizzeria_static.Models
@@ -13,6 +14,7 @@ namespace la_mia_pizzeria_static.Models
 
         [Column(TypeName = "text")]
         [Required(ErrorMessage ="La descrizione è obbligatoria")]
+        [AtLeastFiveWords]
         public string Description { get; set; }
 
         [Url(ErrorMessage ="Devi inserire un link valido dell'immagine")]
