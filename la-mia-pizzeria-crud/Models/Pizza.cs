@@ -22,6 +22,7 @@ namespace la_mia_pizzeria_static.Models
         public string Image { get; set; }
 
         [Required(ErrorMessage ="Devi inserire un numero intero o decimale")]
+        [PositiveDecimal]
         public float Prize { get; set; }
 
         public Pizza() { }

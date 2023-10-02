@@ -7,18 +7,21 @@ namespace la_mia_pizzeria_static.ValidationCustom
     {
         protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
         {
-            if (value is string)
+            if (value is float)
             {
-                string imputValue = (float)value;
+                   
+                float imputValue = (float)value;
+                    if (imputValue == null || imputValue <= 0)
+                    {
+                    return new ValidationResult("Il campo deve contenere un valore positivo");
+                    }
+                    return ValidationResult.Success;
 
-                if (imputValue == null || imputValue.Split(' ').Length <= 4)
-                {
-                    return new ValidationResult("Il campo deve contenere almeno 5 parole");
-                }
-                return ValidationResult.Success;
+
             }
+            return new ValidationResult("Dato non valido");
 
-            return new ValidationResult("Il campo inserito non è di tipo stringa");
+
         }
     }
 }

@@ -25,7 +25,8 @@ namespace la_mia_pizzeria_static.Controllers
 
                 if (foundPizza == null) 
                 {
-                    return NotFound($"La pizza con {id} non è stata trovata");
+                    //return NotFound($"La pizza con {id} non è stata trovata");
+                    return View("PizzaNotFound");
                 }
                 else
                 {
