@@ -42,6 +42,12 @@
                         <a class="btn btn-info btn-sm" href="@Url.Action("Update", "Pizza", new {id = pizza.Id})">
                             <button>Modifica</button>
                         </a>
+                        <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <a class="btn btn-info btn-sm">
+                                <button>Cancella</button>
+                            </a>
+                        </form>
                     </td>
                 </tr>
             }
