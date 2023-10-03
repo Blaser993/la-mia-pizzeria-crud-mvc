@@ -1,4 +1,5 @@
-﻿using la_mia_pizzeria_static.Database;
+﻿using la_mia_pizzeria_static.CustomLogger;
+using la_mia_pizzeria_static.Database;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,10 +7,19 @@ namespace la_mia_pizzeria_static.Controllers
 {
     public class PizzaController : Controller
     {
+        private ICustomLogger _myLogger;
+
+        public PizzaController(ICustomLogger n)
+        {
+            _myLogger = n;
+        }
+
+        [HttpGet]
         public IActionResult Index()
         {
             using(PizzaContext db = new PizzaContext())
             {
+                _myLogger.WriteLog("sono nella pizza/index");
                 List<Pizza> pizze = db.Pizze.ToList<Pizza>();
 
                 return View("Index", pizze);

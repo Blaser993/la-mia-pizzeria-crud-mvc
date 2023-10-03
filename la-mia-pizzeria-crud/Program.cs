@@ -1,3 +1,5 @@
+using la_mia_pizzeria_static.CustomLogger;
+
 namespace la_mia_pizzeria_static
 {
     public class Program
@@ -9,7 +11,13 @@ namespace la_mia_pizzeria_static
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+     
+            builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
+
             var app = builder.Build();
+
+       
+ 
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

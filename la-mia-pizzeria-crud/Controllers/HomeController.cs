@@ -1,4 +1,5 @@
-﻿using la_mia_pizzeria_static.Models;
+﻿using la_mia_pizzeria_static.CustomLogger;
+using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -6,18 +7,21 @@ namespace la_mia_pizzeria_static.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ICustomLogger _myLogger;
+        public HomeController(ICustomLogger n)
         {
-            _logger = logger;
+            _myLogger = n;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public IActionResult index()
         {
+            _myLogger.WriteLog("sono nella home");
             return View();
         }
+   
 
+    
         public IActionResult UserIndex()
         {
             return View();
