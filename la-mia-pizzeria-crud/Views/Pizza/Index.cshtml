@@ -33,7 +33,7 @@
                     <th scope="row">@pizza.Id</th>
                     <td>@pizza.Name</td>
                     <td>@pizza.Description</td>
-                    <td>@pizza.CategoryId</td>
+                    <td>@(pizza.Category != null ? pizza.Category.Name : "")</td>
                     <td>
                         <img class="pizza" src="@pizza.Image" alt="Foto della pizza @pizza.Name "/>
                     </td>

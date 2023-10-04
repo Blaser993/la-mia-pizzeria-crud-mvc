@@ -24,7 +24,7 @@ namespace la_mia_pizzeria_static.Controllers
             using(PizzaContext db = new PizzaContext())
             {
                 _myLogger.WriteLog("sono nella pizza/index");
-                List<Pizza> pizze = db.Pizze.ToList<Pizza>();
+                List<Pizza> pizze = db.Pizze.Include(pizza => pizza.Category).ToList<Pizza>();
 
                 return View("Index", pizze);
             }
