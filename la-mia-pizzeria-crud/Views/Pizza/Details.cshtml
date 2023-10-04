@@ -18,6 +18,18 @@
                 <strong>Descrizione:</strong>
                 @Model.Description
             </p>
+
+            <p>
+                <strong>Categoria:</strong>
+                @if (Model.Category != null)
+                {
+                    @Model.Category.Name
+                }
+                else
+                {
+                    <span>Nessuna categoria</span>
+                }
+            </p>
         </div>
     </div>
 </div>

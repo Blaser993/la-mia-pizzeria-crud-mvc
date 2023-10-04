@@ -49,22 +49,46 @@ namespace la_mia_pizzeria_static.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            return View("Create");
+            using (PizzaContext db = new PizzaContext())
+            {
+                List<Category> categories = db.Categories.ToList();
+
+                PizzaFormModel model = new PizzaFormModel();
+                model.Pizza = new Pizza();
+                model.Categories = categories;
+
+                return View("Create", model);
+            }
+
+
         }
 
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Pizza newPizza)
+        public IActionResult Create(PizzaFormModel data)
         {
             if (!ModelState.IsValid)
             {
-                return View("Create", newPizza);
+                using (PizzaContext db = new PizzaContext())
+                {
+                    List<Category> categories = db.Categories.ToList();
+                    data.Categories = categories;
+                    return View("Create", data);
+                }
+
             }
 
             using(PizzaContext db = new PizzaContext())
             {
-                db.Pizze.Add(newPizza);
+                Pizza pizzaToCreate =new Pizza();
+                pizzaToCreate.Name = data.Pizza.Name;
+                pizzaToCreate.Description = data.Pizza.Description;
+                pizzaToCreate.Image = data.Pizza.Image;
+                pizzaToCreate.Prize = data.Pizza.Prize;
+                pizzaToCreate.CategoryId = data.Pizza.CategoryId;
+
+                db.Pizze.Add(pizzaToCreate);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
