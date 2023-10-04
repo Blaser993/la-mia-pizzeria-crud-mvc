@@ -124,37 +124,17 @@ namespace la_mia_pizzeria_static.Controllers
               
             }
 
-            /*
-            using (PizzaContext db = new PizzaContext())
-            {
-                Pizza pizzaToEdit = db.Pizze.Where(pizza => pizza.Id == id).FirstOrDefault();
 
-                if (pizzaToEdit != null)
-                {
-                    pizzaToEdit.Name = data.Pizza.Name;
-                    pizzaToEdit.Description = data.Pizza.Description;
-                    pizzaToEdit.Image = data.Pizza.Image;
-                    pizzaToEdit.Prize = data.Pizza.Prize;
-                    pizzaToEdit.CategoryId = data.Pizza.CategoryId;
 
-                    db.SaveChanges();
-
-                    return RedirectToAction("Index");
-                }
-
-                else
-                {
-                    return NotFound();
-                }
-            }
-            */
-
-            Pizza? pizzaToUpdate = _myDatabase.Pizze.Find(id);
+            Pizza pizzaToUpdate = _myDatabase.Pizze.Include(p => p.Category).FirstOrDefault(p => p.Id == id);
 
             if (pizzaToUpdate != null)
             {
-                EntityEntry<Pizza> entryEntity = _myDatabase.Entry(pizzaToUpdate);
-                entryEntity.CurrentValues.SetValues(data.Pizza);
+                pizzaToUpdate.Name = data.Pizza.Name;
+                pizzaToUpdate.Description = data.Pizza.Description;
+                pizzaToUpdate.Image = data.Pizza.Image;
+                pizzaToUpdate.Prize = data.Pizza.Prize;
+                pizzaToUpdate.CategoryId = data.Pizza.CategoryId;
 
                 _myDatabase.SaveChanges();
 
