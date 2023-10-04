@@ -1,4 +1,5 @@
 using la_mia_pizzeria_static.CustomLogger;
+using la_mia_pizzeria_static.Database;
 
 namespace la_mia_pizzeria_static
 {
@@ -13,6 +14,7 @@ namespace la_mia_pizzeria_static
 
      
             builder.Services.AddScoped<ICustomLogger, CustomFileLogger>();
+            builder.Services.AddScoped<PizzaContext>();
 
             var app = builder.Build();
 

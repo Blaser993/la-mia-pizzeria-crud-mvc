@@ -4,7 +4,7 @@
 }
 
 @model List<Pizza>
-@model List<Category>
+
 
 @if(Model.Count() == 0)
 {
@@ -50,9 +50,9 @@
 
                         <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
                             @Html.AntiForgeryToken()
-                            <a class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Elimina
-                            </a>
+                            </button>
                         </form>
                     </td>
                 </tr>

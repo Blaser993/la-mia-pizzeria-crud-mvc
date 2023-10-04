@@ -25,6 +25,7 @@ namespace la_mia_pizzeria_static.Models
         [PositiveDecimal]
         public float Prize { get; set; }
 
+        //relazione 1 a n con Category
         public int? CategoryId {  get; set; }
         public Category? Category { get; set; }
 
