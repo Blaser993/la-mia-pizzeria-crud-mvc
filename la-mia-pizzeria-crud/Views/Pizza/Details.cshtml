@@ -30,6 +30,19 @@
                     <span>Nessuna categoria</span>
                 }
             </p>
+
+      
+
+            @if (Model.Ingredients.Any())
+            {
+            <p> <strong>Ingredienti:</strong> @string.Join(", ", Model.Ingredients.Select(i => i.Name))</p>
+            }
+            else
+            {
+            <p>Nessun ingrediente selezionato</p>
+            }
+
+
         </div>
     </div>
 </div>

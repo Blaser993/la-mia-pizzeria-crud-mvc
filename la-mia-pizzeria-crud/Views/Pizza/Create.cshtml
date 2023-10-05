@@ -45,8 +45,15 @@
                             }
                         }
                     </select>
-                  
-
+            
+                </div>
+                <div class="mb-3">
+                    <strong>Ingredienti:</strong>
+                    <select asp-for="SelectedIngredientsId"
+                            multiple="multiple"
+                            class="form-control"
+                            asp-items="@Model.Ingredients">
+                    </select>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Crea nuova pizza</button>
