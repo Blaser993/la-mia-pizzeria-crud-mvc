@@ -2,6 +2,7 @@
 using la_mia_pizzeria_static.CustomLogger;
 using la_mia_pizzeria_static.Database;
 using la_mia_pizzeria_static.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ using System.Diagnostics;
 
 namespace la_mia_pizzeria_static.Controllers
 {
+    [Authorize(Roles = "USER,ADMIN")]
     public class PizzaController : Controller
     {
         private ICustomLogger _myLogger;
@@ -35,6 +37,8 @@ namespace la_mia_pizzeria_static.Controllers
             
         }
 
+        [Authorize]
+        [HttpGet]
         public IActionResult Details(int id)
         {
             using(PizzaContext db = new PizzaContext())
@@ -56,6 +60,7 @@ namespace la_mia_pizzeria_static.Controllers
             
         }
 
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public IActionResult Create()
         {

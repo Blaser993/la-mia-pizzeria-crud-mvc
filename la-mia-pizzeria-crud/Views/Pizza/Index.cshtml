@@ -43,17 +43,21 @@
                             Dettagli
                         </a>
                         
-                        <a class="btn btn-warning btn-sm my-1" href="@Url.Action("Update", "Pizza", new {id = pizza.Id})">
-                            Modifica
-                        </a>
-                        
 
-                        <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
-                            @Html.AntiForgeryToken()
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Elimina
-                            </button>
-                        </form>
+                        @if (User.IsInRole("ADMIN"))
+                        {
+                            <a class="btn btn-warning btn-sm my-1" href="@Url.Action("Update", "Pizza", new {id = pizza.Id})">
+                                Modifica
+                            </a>
+
+
+                            <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm">
+                                    Elimina
+                                </button>
+                            </form>
+                        }
                     </td>
                 </tr>
             }
